@@ -10,9 +10,12 @@ const app = express();
 app.set('view engine', 'ejs');
 
 //connect to mongodb (need a setup)
-mongoose.connect(URI, ()=>{
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoUserOAuth";
+mongoose.connect(MONGODB_URI, ()=>{
     console.log('connected to mongodb')
-})
+    
+});
+
 
 //setup routes
 app.use("/auth",authRoutes);
