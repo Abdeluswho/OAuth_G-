@@ -22,6 +22,7 @@ passport.use(
         clientSecret: keys.google.clientSecret
 
     }, (accessToken, refreshToken, profile, done) => {
+        console.log(profile);
         //passport callback function
         User.findOne({
             googleid: profile.id
@@ -33,7 +34,8 @@ passport.use(
 
                 new User({
                     username: profile.displayName,
-                    googleid: profile.id
+                    googleid: profile.id,
+                    thumbnail: profile._json.image.url
                 }).save().then((newUser) => {
                     console.log("new user created: ", newUser);
                     done(null, newUser);

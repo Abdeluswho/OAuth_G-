@@ -45,9 +45,13 @@
     
     <nav>
         <ul>
-                <li><a href="/auth/logout">logout</a></li>
-                <li><a href="/auth/login">Login</a></li>
-                <li><a href="/">Homepage</a></li>
+                <% if(user) {%>
+                    <li><a href="/auth/logout">logout</a></li>
+               <%} else {%>
+                    <li><a href="/auth/login">Login</a></li>
+               <%}%> 
+               <li><a href="/">Homepage</a></li>
+               <li><a href="/profile">Profile</a></li>
         </ul>
     </nav>
     <header>
@@ -55,7 +59,8 @@
         <h2>Profile Page</h2>
     </header>
     <main>
-       
+       <img src= "<%= user.thumbnail %>"/>
+       <p>This is your thumbnail</p>
     </main>
 
 </body>
