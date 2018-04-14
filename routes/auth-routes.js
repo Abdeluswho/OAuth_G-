@@ -1,4 +1,4 @@
-const  router  = require('express').Router();
+const router  = require('express').Router();
 const passport = require('passport');
 //auth login
 
@@ -6,14 +6,14 @@ router.get('/login', (req, res) => {
     res.render('login', {user:req.user});
 })
 
-//auth logout
+//auth logout**********************************
 
 router.get('/logout', (req, res) => {
     req.logout() //distroying the cookie to logout
     res.redirect("/");
 })
 
-//auth with google
+//auth with google***********************
 router.get('/google', passport.authenticate('google', {
     scope: ['profile']
 }));
